@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Conversion Calculator</title>
+	<script>
+		function convert() {
+			var fromValue = parseFloat(document.getElementById("fromValue").value);
+			var fromUnit = document.getElementById("fromUnit").value;
+			var toUnit = document.getElementById("toUnit").value;
+			var result = 0;
+			
+			// Convert from input unit to meters
+			switch (fromUnit) {
+				case "inches":
+					result = fromValue * 0.0254;
+					break;
+				case "feet":
+					result = fromValue * 0.3048;
+					break;
+				case "yards":
+					result = fromValue * 0.9144;
+					break;
+				case "miles":
+					result = fromValue * 1609.344;
+					break;
+				case "millimeters":
+					result = fromValue * 0.001;
+					break;
+				case "centimeters":
+					result = fromValue * 0.01;
+					break;
+				case "meters":
+					result = fromValue;
+					break;
+				case "kilometers":
+					result = fromValue * 1000;
+					break;
+			}
+			
+			// Convert from meters to output unit
+			switch (toUnit) {
+				case "inches":
+					result = result / 0.0254;
+					break;
+				case "feet":
+					result = result / 0.3048;
+					break;
+				case "yards":
+					result = result / 0.9144;
+					break;
+				case "miles":
+					result = result / 1609.344;
+					break;
+				case "millimeters":
+					result = result / 0.001;
+					break;
+				case "centimeters":
+					result = result / 0.01;
+					break;
+				case "meters":
+					result = result;
+					break;
+				case "kilometers":
+					result = result / 1000;
+					break;
+			}
+			
+			document.getElementById("toValue").value = result.toFixed(2);
+		}
+	</script>
+</head>
+<body>
+	<h1>Conversion Calculator</h1>
+	<form>
+		<label for="fromValue">Value:</label>
+		<input type="number" id="fromValue" name="fromValue"><br><br>
+		
+		<label for="fromUnit">From:</label>
+		<select id="fromUnit" name="fromUnit">
+			<option value="inches">Inches</option>
+			<option value="feet">Feet</option>
+			<option value="yards">Yards</option>
+			<option value="miles">Miles</option>
+			<option value="millimeters">Millimeters</option>
+			<option value="centimeters">Centimeters</option>
+			<option value="meters" selected>Meters</option>
+			<option value="kilometers">Kilometers</option>
+		</select><br><br>
+		
+		<label for="toUnit">To:</label>
+		<select id="toUnit" name="toUnit">
+			<option value="inches">Inches</option>
+			<option value="feet">Feet</option>
+			<option value="yards">Yards</option>
+			<option value="miles">Miles</option>
+			<option value="millimeters">Millimeters</option>
+			<option value="centimeters">Centimeters</option>
+			<option value="meters" selected>Meters</option>
+			<option value="kilometers">Kilometers</option>
+</select><br><br>
+	<label for="toValue">Result:</label>
+	<input type="number" id="toValue" name="toValue" readonly><br><br>
+	
+	<button type="button" onclick="convert()">Convert</button>
+</form>
+</body>
+</html>
